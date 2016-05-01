@@ -1,0 +1,99 @@
+<html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+<head>
+  <script>
+  function validateForm() {
+
+    var location = document.forms["addpropertyform"]["location"].value;
+      if (location == null || location == "") {
+        alert("location must be filled out");
+        return false;
+        }
+
+    var price = document.forms["addpropertyform"]["price"].value;
+    if (price < 0 || price == null || price == "") {
+      alert("invalid price");
+      return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div>
+    <h1> Properties for sale </h1>
+    <table border = "1" style = "width:50%">
+      <tr>
+          <th>Property type</th>
+          <th>Price</th>
+          <th>Location</th>
+          <th>Washing Machine</th>
+          <th>Pets Allowed</th>
+          <th>Heating</th>
+          <th>Hot Water</th>
+      </tr>
+    {% for n in data %}
+    <!-- <div>{{n}}</div> -->
+    <tr>
+      {% for p in n %}
+      <td> {{p}} </td>
+        <!-- <div>{{p}}</div> -->
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+<br/>
+  <div>
+    <h1> Properties sold </h1>
+    <table border = "1" style = "width:50%">
+      <tr>
+          <th>Date of transaction</th>
+          <th>Property type</th>
+          <th>Price</th>
+          <th>Location</th>
+          <th>Payment method</th>
+          <th>Currency</th>
+      </tr>
+    {% for n in data2 %}
+    <!-- <div>{{n}}</div> -->
+    <tr>
+      {% for p in n %}
+      <td> {{p}} </td>
+        <!-- <div>{{p}}</div> -->
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+<br/>
+
+  <form method="POST" action="/addproperty" name= "addpropertyform" onsubmit="return validateForm()">
+    Property Type : <select name = "propertytype">
+      <option value = "Villa">Villa</option>
+      <option value = "Studio">Studio</option>
+      <option value = "Apartment">Apartment</option>
+    </select><br/>
+    Location : <input type = "text" name = "location"><br/>
+    Price : <input type = "number" name = "price"><br/>
+    Washing Machine: <input type = "radio" name = "washing" value = "yes" checked="checked">Yes
+    <input type = "radio" name = "washing" value = "no">No<br/>
+    Pets Allowed: <input type = "radio" name = "pets" value = "yes" checked="checked">Yes
+    <input type = "radio" name = "pets" value = "no">No<br/>
+    Heating: <input type = "radio" name = "heating" value = "yes" checked="checked">Yes
+    <input type = "radio" name = "heating" value = "no">No<br/>
+    Hot Water: <input type = "radio" name = "water" value = "yes" checked="checked">Yes
+    <input type = "radio" name = "water" value = "no">No<br/>
+    <input type = "submit" value = "Add Property">
+  </form>
+
+</body>
+
+
+</html>

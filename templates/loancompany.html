@@ -1,0 +1,59 @@
+<html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+
+  <h1>In demand loan companies</h1>
+  <div>
+    <table border = "1" style = "width:50%">
+      <tr>
+          <th>Company id</th>
+          <th>Name</th>
+          <th>Rating</th>
+          <th>Rate of Interest</th>
+      </tr>
+    {% for n in data2 %}
+    <!-- <div>{{n}}</div> -->
+    <tr>
+      {% for p in n %}
+      <td> {{p}} </td>
+        <!-- <div>{{p}}</div> -->
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+  <br/>
+
+  <h1>List of loan companies</h1>
+  <div>
+    <table border = "1" style = "width:50%">
+      <tr>
+          <th>Company id</th>
+          <th>Name</th>
+          <th>Rating</th>
+          <th>Rate of Interest</th>
+      </tr>
+    {% for n in data %}
+    <!-- <div>{{n}}</div> -->
+    <tr>
+      {% for p in n %}
+      <td> {{p}} </td>
+        <!-- <div>{{p}}</div> -->
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+  <br/>
+
+</body>
+
+
+</html>

@@ -1,0 +1,32 @@
+<html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <h1>Enter the Mode of payment and currency</h1>
+
+<form method="POST" action="/finalbuy">
+Mode of Payment:
+<select name = "paymentmode">
+  <option value = "Credit">Credit Card</option>
+  <option value = "Debit">Debit Card</option>
+  <option value = "Cash">Cash</option>
+</select><br/>
+Currency:
+<select name = "currency">
+  <option value = "USD">USD</option>
+  <option value = "GBR">GBR</option>
+  <option value = "INR">INR</option>
+</select><br/>
+<input type="submit" value="Buy">
+</form>
+
+</body>
+
+
+</html>

@@ -1,0 +1,63 @@
+<html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+<head>
+  <script>
+  function validateForm() {
+    var name = document.forms["newsellerform"]["name"].value;
+    if (name == null || name == "") {
+      alert("Name must be filled out");
+      return false;
+      }
+
+      var email = document.forms["newsellerform"]["email"].value;
+      if (email == null || email == "") {
+        alert("email must be filled out");
+        return false;
+        }
+
+    var address = document.forms["newsellerform"]["address"].value;
+    if (address == null || address == "") {
+      alert("Address must be filled out");
+      return false;
+      }
+
+
+      return true;
+    }
+
+    function validateForm2() {
+        var email = document.forms["existingsellerform"]["email"].value;
+        if (email == null || email == "") {
+          alert("email must be filled out");
+          return false;
+        }
+        return true;
+    }
+
+  </script>
+</head>
+
+<body>
+  <h1>Seller Page</h1><br/>
+  <h3>New Seller Registration</h3><br/>
+  <form name = "newsellerform" method="POST" action="/newseller" onsubmit="return validateForm()">
+    Name : <input type = "text" name = "name"><br/>
+    Email : <input type = "email" name = "email"><br/>
+    Address : <input type = "text" name = "address"><br/>
+    <input type = "submit" value = "Register">
+  </form>
+  <br/>
+  <h3> Existing Seller </h3><br/>
+  <form name = "existingsellerform" method="POST" action="/existingseller" onsubmit="return validateForm2()">
+    Email : <input type = "email" name = "email"><br/>
+    <input type = "submit" value = "login">
+  </form>
+</body>
+
+
+</html>

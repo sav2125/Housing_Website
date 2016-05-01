@@ -1,0 +1,144 @@
+<html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+  <head>
+    <script>
+      function loanfunction() {
+        location.href = "loancompany";
+      }
+      function cartfunction() {
+        location.href = "cart";
+      }
+    </script>
+  </head>
+
+<body>
+  <h1>Properties</h1>
+  <div>
+    <h3>View your favourite Properties</h3>
+    <button id="CartBtn" onclick = "cartfunction()">Cart</button>
+  </div>
+  <div>
+    <h2> Hot properties</h2>
+    <table border = "1" style = "width:50%">
+      <tr>
+          <th>Property id</th>
+          <th>Type</th>
+          <th>Location</th>
+          <th>Price</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Seller rating</th>
+          <th>Buy</th>
+          <th>Cart</th>
+      </tr>
+    {% for n in data %}
+    <!-- <div>{{n}}</div> -->
+    <tr>
+      {% for p in n %}
+      <td> {{p}} </td>
+        <!-- <div>{{p}}</div> -->
+      {% endfor %}
+      <td><form method = "POST" name = "buyhotform" action = "/buyproperty"><input type = "hidden" name ="clicked" value = "{{data[loop.index - 1][0]}}"><input type = "submit" value = "Buy"></form></td>
+      <td><form method = "POST" name = "cartform" action = "/addcart"><input type = "hidden" name ="clicked" value = "{{data[loop.index - 1][0]}}"><input type = "submit" value = "Add to Cart"></form></td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+  <br/>
+
+  <div>
+    <h2> Star Sellers </h2>
+    <table border = "1" style = "width:50%">
+      <tr>
+          <th>Seller id</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Seller rating</th>
+      </tr>
+    {% for n in data3 %}
+    <!-- <div>{{n}}</div> -->
+    <tr>
+      {% for p in n %}
+      <td> {{p}} </td>
+        <!-- <div>{{p}}</div> -->
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+  <br/>
+
+    <h3>Filter Properties:</h3>
+    <form method="POST" action="/filterproperty" name= "filterpropertyform">
+      Property Type : <select name = "propertytype">
+        <option value = "Villa">Villa</option>
+        <option value = "Studio">Studio</option>
+        <option value = "Apartment">Apartment</option>
+      </select><br/>
+      Location : <select name = "location">
+        <option value = "New York">New York</option>
+        <option value = "Baltimore">Baltimore</option>
+        <option value = "Boston">Boston</option>
+        <option value = "New Jersey">New Jersey</option>
+        <option value = "Washington">Washington</option>
+        <option value = "Seattle">Seattle</option>
+        <option value = "Philadelphia">Philadelphia</option>
+      </select><br/>
+      Washing Machine: <input type = "radio" name = "washing" value = "yes" checked="checked">Yes
+      <input type = "radio" name = "washing" value = "no">No<br/>
+      Pets Allowed: <input type = "radio" name = "pets" value = "yes" checked="checked">Yes
+      <input type = "radio" name = "pets" value = "no">No<br/>
+      Heating: <input type = "radio" name = "heating" value = "yes" checked="checked">Yes
+      <input type = "radio" name = "heating" value = "no">No<br/>
+      Hot Water: <input type = "radio" name = "water" value = "yes" checked="checked">Yes
+      <input type = "radio" name = "water" value = "no">No<br/>
+      <input type = "submit" value = "Filter Properties">
+    </form>
+
+
+  <div>
+    <h2> Listed properties</h2>
+    <table border = "1" style = "width:50%">
+      <tr>
+          <th>Property id</th>
+          <th>Type</th>
+          <th>Price</th>
+          <th>Location</th>
+          <th>Washing Machine</th>
+          <th>Pets</th>
+          <th>Heating</th>
+          <th>Hot Water</th>
+          <th>Buy</th>
+          <th>Cart</th>
+      </tr>
+    {% for n in data2 %}
+    <!-- <div>{{n}}</div> -->
+    <tr>
+      {% for p in n %}
+      <td> {{p}} </td>
+        <!-- <div>{{p}}</div> -->
+      {% endfor %}
+      <td><form method = "POST" name = "buyhotform1" action = "/buyproperty"><input type = "hidden" name ="clicked" value = "{{data2[loop.index - 1][0]}}"><input type = "submit" value = "Buy"></form></td>
+      <td><form method = "POST" name = "cartform" action = "/addcart"><input type = "hidden" name ="clicked" value = "{{data2[loop.index - 1][0]}}"><input type = "submit" value = "Add to Cart"></form></td>
+
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+
+  <div>
+    <h3>Need Housing Loan?</h3>
+    <button id="LoanBtn" onclick = "loanfunction()">Click Here!</button>
+  </div>
+
+
+</body>
+
+
+</html>

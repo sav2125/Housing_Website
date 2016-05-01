@@ -1,0 +1,75 @@
+<html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+<head>
+  <script>
+  function validateForm() {
+    var name = document.forms["newbuyerform"]["name"].value;
+    if (name == null || name == "") {
+      alert("Name must be filled out");
+      return false;
+      }
+
+      var email = document.forms["newbuyerform"]["email"].value;
+      if (email == null || email == "") {
+        alert("email must be filled out");
+        return false;
+        }
+
+    var address = document.forms["newbuyerform"]["address"].value;
+    if (address == null || address == "") {
+      alert("Address must be filled out");
+      return false;
+      }
+
+    var creditscore = document.forms["newbuyerform"]["creditscore"].value;
+    if ( (creditscore < 301 || creditscore > 850) || creditscore == null || creditscore == "") {
+      alert("invalid credit score");
+      return false;
+      }
+
+    var income = document.forms["newbuyerform"]["income"].value;
+    if (income < 0 || income == null || income == "") {
+      alert("invalid income");
+      return false;
+      }
+      return true;
+    }
+
+    function validateForm2() {
+        var email = document.forms["existingbuyerform"]["email"].value;
+        if (email == null || email == "") {
+          alert("email must be filled out");
+          return false;
+        }
+        return true;
+    }
+
+  </script>
+</head>
+
+<body>
+  <h1>Buyer Page</h1><br/>
+  <h3>New Buyer Registration</h3><br/>
+  <form name = "newbuyerform" method="POST" action="/newbuyer" onsubmit="return validateForm()">
+    Name : <input type = "text" name = "name"><br/>
+    Email : <input type = "email" name = "email"><br/>
+    Address : <input type = "text" name = "address"><br/>
+    Credit Score : <input type = "number" name = "creditscore"><br/>
+    Income : <input type = "number" name = "income"><br/>
+    <input type = "submit" value = "Register">
+  </form>
+  <br/>
+  <h3> Existing Buyer </h3><br/>
+  <form name = "existingbuyerform" method="POST" action="/existingbuyer" onsubmit="return validateForm2()">
+    Email : <input type = "email" name = "email"><br/>
+    <input type = "submit" value = "login">
+  </form>
+</body>
+
+
+</html>

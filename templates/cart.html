@@ -1,0 +1,41 @@
+<html>
+  <style>
+    body{
+      font-size: 15pt;
+      font-family: arial;
+    }
+  </style>
+
+
+<body>
+  <div>
+    <h2>Your favourites</h2>
+    <table border = "1" style = "width:50%">
+      <tr>
+          <th>Property id</th>
+          <th>Type</th>
+          <th>Price</th>
+          <th>Location</th>
+          <th>Washing Machine</th>
+          <th>Pets</th>
+          <th>Heating</th>
+          <th>Hot Water</th>
+          <th>Remove from Cart</th>
+      </tr>
+
+
+      {% for n in data %}
+      <tr>
+        {% for p in n %}
+        <td> {{p}} </td>
+        {% endfor %}
+        <td><form method = "POST" name = "deletecart" action = "/removecart"><input type = "hidden" name ="clicked" value = "{{data[loop.index - 1][0]}}"><input type = "submit" value = "Remove from Cart"></form></td>
+      </tr>
+      {% endfor %}
+
+  </table>
+  </div>
+</body>
+
+
+</html>
